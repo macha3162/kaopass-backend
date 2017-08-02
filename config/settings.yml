@@ -3,4 +3,4 @@ aws:
   secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
   region: us-west-2
   bucket: zero-to-one-photos
-  collection_id: tony-homework
+  collection_id: <%= ENV['AWS_COLLECTION_ID'] %>
