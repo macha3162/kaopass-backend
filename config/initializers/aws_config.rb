@@ -1,9 +1,9 @@
 require 'aws-sdk'
 
 Aws.config.update({
-                      region: Rails.application.secrets.aws[:region],
-                      credentials: Aws::Credentials.new(Rails.application.secrets.aws[:access_key_id],
-                                                        Rails.application.secrets.aws[:secret_access_key])
+                      region: Settings.aws.region,
+                      credentials: Aws::Credentials.new(Settings.aws.access_key_id,
+                                                        Settings.aws.secret_access_key)
                   })
 
 

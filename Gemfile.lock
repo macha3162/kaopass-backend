@@ -78,7 +78,11 @@ GEM
     coffee-script-source (1.12.2)
     commonjs (0.2.7)
     concurrent-ruby (1.0.5)
+    config (1.4.0)
+      activesupport (>= 3.0)
+      deep_merge (~> 1.1.1)
     connection_pool (2.2.1)
+    deep_merge (1.1.1)
     erubi (1.6.1)
     excon (0.57.1)
     execjs (2.7.0)
@@ -388,6 +392,7 @@ DEPENDENCIES
   capybara (~> 2.13)
   carrierwave
   coffee-rails (~> 4.2)
+  config
   fog
   jbuilder (~> 2.5)
   jquery-rails

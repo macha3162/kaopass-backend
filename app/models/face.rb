@@ -20,7 +20,7 @@ class Face < ApplicationRecord
   def self.find_by_image(image)
     $rekognition.search_faces_by_image(
         {
-            collection_id: Rails.application.secrets.aws[:collection_id],
+            collection_id: Settings.aws.collection_id,
             face_match_threshold: 95,
             image: {
                 bytes: image.read
@@ -31,11 +31,11 @@ class Face < ApplicationRecord
   def self.find_by_s3(path)
     $rekognition.search_faces_by_image(
         {
-            collection_id: Rails.application.secrets.aws[:collection_id],
+            collection_id: Settings.aws.collection_id,
             face_match_threshold: 60,
             image: {
                 s3_object: {
-                    bucket: Rails.application.secrets.aws[:bucket],
+                    bucket: Settings.aws.bucket,
                     name: path,
                 },
             },
@@ -45,7 +45,7 @@ class Face < ApplicationRecord
   def delete_face_collection
     $rekognition.delete_faces(
         {
-            collection_id: Rails.application.secrets.aws[:collection_id],
+            collection_id: Settings.aws.collection_id,
             face_ids: [self.aws_face_id],
         })
   end

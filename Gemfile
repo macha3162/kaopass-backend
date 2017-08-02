@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'config'
+
 # for image uploader with AWS S3
 gem 'carrierwave'
 gem 'rmagick'

@@ -20,12 +20,12 @@ class Photo < ApplicationRecord
   def detects_faces
     $rekognition.index_faces(
         {
-            collection_id: Rails.application.secrets.aws[:collection_id],
+            collection_id: Settings.aws.collection_id,
             detection_attributes: [],
             external_image_id: self.id.to_s,
             image: {
                 s3_object: {
-                    bucket: Rails.application.secrets.aws[:bucket],
+                    bucket: Settings.aws.bucket,
                     name: self.image.path,
                 },
             },
