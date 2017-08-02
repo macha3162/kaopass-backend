@@ -21,6 +21,7 @@ class PhotosController < ApplicationController
 
     respond_to do |format|
       if @photo.save
+        IndexFacesJob.perform_later(@photo)
         format.html { redirect_to [@user, @photo], notice: 'Photo was successfully created.' }
         format.json { render :show, status: :created, location: [@user, @photo] }
       else
@@ -33,6 +34,7 @@ class PhotosController < ApplicationController
   def update
     respond_to do |format|
       if @photo.update(photo_params)
+        IndexFacesJob.perform_later(@photo)
         format.html { redirect_to [@user, @photo], notice: 'Photo was successfully updated.' }
         format.json { render :show, status: :ok, location: [@user, @photo] }
       else

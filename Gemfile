@@ -35,7 +35,18 @@ gem 'jbuilder', '~> 2.5'
 
 # for image uploader with AWS S3
 gem 'carrierwave'
+gem 'rmagick'
 gem 'fog'
+
+gem 'aws-sdk', '~> 2'
+gem 'aws-sdk-rails'
+
+gem 'sidekiq'
+gem 'redis-namespace'
+
+gem 'jquery-rails'
+gem 'twitter-bootstrap-rails'
+gem 'kaminari'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
