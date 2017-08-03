@@ -9,4 +9,12 @@ Rails.application.routes.draw do
     resources :photos
     resources :signatures
   end
+
+  namespace :api do
+    resources :searches
+    resources :users do
+      resources :photos
+      resources :signatures
+    end
+  end
 end

@@ -34,7 +34,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'config'
-
+gem 'active_model_serializers', '~> 0.10.0'
 # for image uploader with AWS S3
 gem 'carrierwave'
 gem 'rmagick'
