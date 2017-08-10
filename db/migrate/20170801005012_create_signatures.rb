@@ -3,6 +3,7 @@ class CreateSignatures < ActiveRecord::Migration[5.1]
     create_table :signatures do |t|
       t.integer :user_id
       t.string :image
+      t.string :name
       t.timestamps
     end
   end

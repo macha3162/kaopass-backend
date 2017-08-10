@@ -10,7 +10,9 @@
 
 <h3 class="page-header">result</h3>
 <% @face_matchs.each do |face_match| %>
-    <%= image_tag Photo.find_by(id: face_match.face.external_image_id).try(:image).try(:url) || '' if face_match.face.external_image_id.present? %>
+    <% photo = Photo.find_by(id: face_match.face.external_image_id) if face_match.face.external_image_id.present? %>
+    <%= image_tag photo.try(:image).try(:url) || '' if photo.present? %><br>
+    <h3><%= photo.user.try(:name) if photo.present? %></h3>
     <hr />
 <% end %>
 

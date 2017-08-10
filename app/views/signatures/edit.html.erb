@@ -1,6 +1,5 @@
-<h1>Editing Signature</h1>
-
-<%= render 'form', signature: @signature %>
-
-<%= link_to 'Show', @signature %> |
-<%= link_to 'Back', signatures_path %>
+<%- model_class = Signature -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
+</div>
+<%= render :partial => 'form' %>

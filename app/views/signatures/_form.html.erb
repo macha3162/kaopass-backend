@@ -1,22 +1,41 @@
-<%= form_with(model: signature, local: true) do |form| %>
-  <% if signature.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(signature.errors.count, "error") %> prohibited this signature from being saved:</h2>
+<%= form_for [@user, @signature], :html => { :class => "form-horizontal signature" } do |f| %>
 
-      <ul>
-      <% signature.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <% if @signature.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@signature.errors.count, "error") %> prohibited this signature from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @signature.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.text_field :image, id: :signature_image %>
+  <div class="form-group">
+    <%= f.label :image, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.file_field :image, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:image) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :name, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:name) %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                user_signatures_path(@user), :class => 'btn btn-default' %>
+    </div>
   </div>
+
 <% end %>
