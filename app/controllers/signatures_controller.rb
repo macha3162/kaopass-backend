@@ -20,7 +20,7 @@ class SignaturesController < ApplicationController
   def create
     @signature = @user.signatures.new(signature_params)
     if @signature.save
-      head :create
+      head :created
     else
       render :new
     end

@@ -1247,6 +1247,7 @@
         imageRenderingCanvas.height = imageDataToRender.height;
         imageRenderingCanvas.style.height = imageDataToRender.height + 'px';
         var ctx = imageRenderingCanvas.getContext('2d');
+        ctx.scale(0.1, 0.1);
         ctx.putImageData(imageDataToRender, 0, 0);
         return imageRenderingCanvas.toDataURL("image/png");
     };
