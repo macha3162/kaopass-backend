@@ -15,6 +15,7 @@
   <tbody>
   <% @users.each do |user| %>
       <tr>
+        <td><%= user.id %></td>
         <td><%= link_to user_photos_path(user) do %>
               <% photo = user.photos.first %>
               <%= image_tag photo.image.thumb.url if photo.present? %>
@@ -23,7 +24,7 @@
         <td><%= user.name %></td>
         <td><%= l user.created_at %></td>
         <td>
-          <%= link_to t('.show', :default => t("helpers.links.show")),
+          <%= link_to '写真',
                       user_photos_path(user), :class => 'btn btn-default btn-xs' %>
           <%= link_to '署名',
                       user_signatures_path(user), :class => 'btn btn-default btn-xs' %>

@@ -378,8 +378,9 @@ The `myscript-common-element` is a web component wrapper around MyScriptJS InkPa
          */
         post: function () {
             if (this._inkPaper) {
-              console.log(document.querySelector('#candidate_result').value);
-              console.log(this._inkPaper.getInkAsPng());
+              console.log(document.querySelector('#signature_name').value = document.querySelector('#candidate_result').value);
+              console.log(document.querySelector('#signature_image').value = this._inkPaper.getInkAsPng());
+                document.querySelector('#new_signature').submit();
             }
         },
         /**

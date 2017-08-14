@@ -1,5 +1,42 @@
-<%- model_class = Signature -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
-</div>
-<%= render :partial => 'form' %>
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="HandheldFriendly" content="true"/>
+  <title>myscript-text demo</title>
+  <script src="<%= root_path %>bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="<%= root_path %>myscript-text-web.html">
+  <style is="custom-style" include="iron-flex"></style>
+</head>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+  }
+  myscript-text-web {
+    height: 100%;
+  }
+  paper-menu-button {
+    padding: 0;
+    width: 250px;
+  }
+</style>
+<body touch-action="none" unresolved>
+
+<template id="app" is="dom-bind">
+  <myscript-text-web id="text-input"
+                     host="webdemoapi.myscript.com"
+                     applicationkey="22eda92c-10af-40d8-abea-fd4093c17d81"
+                     hmackey="a1fa759f-b3ce-4091-9fd4-d34bb870c601"
+                     recognitioncandidates="1"
+                     language="ja_JP">
+  </myscript-text-web>
+</template>
+<%= form_for [@user, @signature], :html => { :class => "form-horizontal signature" } do |f| %>
+ <%= f.text_field :name %>
+ <%= f.text_field :image %>
+<% end %>
+</body>
+</html>

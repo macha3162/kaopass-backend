@@ -37,6 +37,7 @@ gem 'config'
 gem 'active_model_serializers', '~> 0.10.0'
 # for image uploader with AWS S3
 gem 'carrierwave'
+gem 'carrierwave-base64'
 gem 'rmagick'
 gem 'fog'
 

@@ -3,7 +3,7 @@ class SignaturesController < ApplicationController
   before_action :set_signature, only: [:show, :edit, :update, :destroy]
 
   def index
-    @signatures = Signature.all
+    @signatures = @user.signatures
   end
 
   def show
@@ -11,6 +11,7 @@ class SignaturesController < ApplicationController
 
   def new
     @signature = @user.signatures.new
+    render layout: false
   end
 
   def edit
@@ -19,7 +20,7 @@ class SignaturesController < ApplicationController
   def create
     @signature = @user.signatures.new(signature_params)
     if @signature.save
-      redirect_to [@user, @signature], notice: 'Signature was successfully created.'
+      head :create
     else
       render :new
     end
