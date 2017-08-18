@@ -3,6 +3,8 @@ class Photo < ApplicationRecord
   has_many :faces, dependent: :destroy
   mount_uploader :image, ImageUploader
 
+  attribute :uuid, :string, default: -> { SecureRandom.uuid }
+
 
   def save_faces
     self.faces.destroy_all

@@ -25,10 +25,12 @@ module Api
       face_matchs = Face.find_by_image(@search.image).face_matches
       face_match = face_matchs.first
       if face_match.present?
+
         photo = Photo.find_by(id: face_match.face.external_image_id)
         if photo.present?
           photo.user.visit_histories.create
           render json: photo.user
+          @search.save
         end
       end
     rescue
