@@ -8,3 +8,9 @@ Aws.config.update({
 
 
 $rekognition = Aws::Rekognition::Client.new()
+begin
+  $rekognition.create_collection(collection_id: Settings.aws.collection_id)
+
+rescue => e
+  pp e
+end

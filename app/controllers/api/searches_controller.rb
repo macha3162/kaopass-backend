@@ -8,23 +8,42 @@ module Api
     end
 
     def show
-      face_matchs = Face.find_by_s3(@search.image.path).face_matches
-      face_match = face_matchs.first
-      if face_match.present?
-         photo = Photo.find_by(id: face_match.face.external_image_id)
-        render json: photo.user if photo.present?
+      begin
+        face_matchs = Face.find_by_s3(@search.image.path).face_matches
+        face_match = face_matchs.first
+        if face_match.present?
+          photo = Photo.find_by(id: face_match.face.external_image_id)
+          render json: photo.user if photo.present?
+        end
+      rescue
+        head :bad_request
       end
-
     end
 
     def create
       @search = Search.new(search_params)
-      if @search.save
-        show
-      else
-        render json: @search.errors, status: :unprocessable_entity
+      face_matchs = Face.find_by_image(@search.image).face_matches
+      face_match = face_matchs.first
+      if face_match.present?
+        photo = Photo.find_by(id: face_match.face.external_image_id)
+        if photo.present?
+          photo.user.visit_histories.create
+          render json: photo.user
+        end
       end
+    rescue
+      head :bad_request
     end
+
+    # 検索クエリの保存どうする？？
+    # def create
+    #   @search = Search.new(search_params)
+    #   if @search.save
+    #     show
+    #   else
+    #     render json: @search.errors, status: :unprocessable_entity
+    #   end
+    # end
 
     def update
       if @search.update(search_params)

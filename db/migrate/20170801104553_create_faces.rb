@@ -12,5 +12,6 @@ class CreateFaces < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+    add_index :faces, :photo_id
   end
 end
