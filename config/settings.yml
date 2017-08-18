@@ -4,3 +4,4 @@ aws:
   region: us-west-2
   bucket: zero-to-one-photos
   collection_id: <%= ENV['AWS_COLLECTION_ID'] %>
+signature_cdn_base: https://d1z9ai696k5k24.cloudfront.net/signature

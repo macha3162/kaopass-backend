@@ -1,7 +1,7 @@
 class SignaturesController < ApplicationController
   before_action :set_user
   before_action :set_signature, only: [:show, :edit, :update, :destroy]
-  skip_before_action :basic_auth, only: [:new, :create]
+  skip_before_action :basic_auth, only: [:new, :create] unless Rails.env.development?
 
   def index
     @signatures = @user.signatures
