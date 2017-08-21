@@ -30,7 +30,7 @@ module Api
         if photo.present?
           photo.user.visit_histories.create
           render json: photo.user
-          @search.save
+          #@search.save
         end
       end
     rescue
