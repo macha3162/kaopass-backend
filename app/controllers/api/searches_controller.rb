@@ -29,6 +29,7 @@ module Api
         photo = Photo.find_by(id: face_match.face.external_image_id)
         if photo.present?
           photo.user.visit_histories.create
+          ActionCable.server.broadcast 'user_channel', message: 'masuda'
           render json: photo.user
           #@search.save
         end

@@ -1,14 +1,24 @@
 <%- model_class = User -%>
 <div class="page-header">
-  <h1><%= t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1>来場者一覧</h1>
 </div>
+<div class="row">
+<div class="well-lg">
+  <div>masuda</div>
+</div>
+</div>
+
+
 <%= paginate @users %>
+<div id="messages"></div>
 <table class="table table-striped">
   <thead>
   <tr>
-    <th><%= model_class.human_attribute_name(:id) %></th>
-    <th><%= model_class.human_attribute_name(:name) %></th>
-    <th><%= model_class.human_attribute_name(:created_at) %></th>
+    <th>ID</th>
+    <th>写真</th>
+    <th>名前</th>
+    <th>来場回数</th>
+    <th>作成日時</th>
     <th><%= t '.actions', :default => t("helpers.actions") %></th>
   </tr>
   </thead>
@@ -22,6 +32,7 @@
           <% end %>
         </td>
         <td><%= user.name %></td>
+        <td><%= user.visit_histories.count %></td>
         <td><%= l user.created_at %></td>
         <td>
           <%= link_to '写真',

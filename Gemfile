@@ -49,6 +49,8 @@ gem 'redis-namespace'
 
 gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
+gem 'chartkick'
+gem 'groupdate'
 gem 'kaminari'
 
 gem 'newrelic_rpm'

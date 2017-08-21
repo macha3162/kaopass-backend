@@ -24,7 +24,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#">Kaopass</a>
+    <a class="navbar-brand" href="<%= root_path %>">KaoPass</a>
     <div class="navbar-collapse collapse navbar-responsive-collapse">
       <ul class="nav navbar-nav">
         <li><%= link_to "Users", users_path %></li>
@@ -36,12 +36,11 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-9">
+    <div class="col-lg-12">
       <%= bootstrap_flash %>
       <%= yield %>
     </div>
-    <div class="col-lg-3">
-    </div><!--/span-->
+
   </div><!--/row-->
 
   <footer>

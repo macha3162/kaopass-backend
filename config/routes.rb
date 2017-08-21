@@ -1,8 +1,10 @@
 require 'sidekiq/web'
 Rails.application.routes.draw do
+  root 'dashboard#index'
+
   mount Sidekiq::Web, at: "/sidekiq"
 
-  root 'users#index'
+  #root 'users#index'
 
   resources :searches
   resources :users do

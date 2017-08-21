@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.includes(:photos).order(id: :desc).page params[:page]
+
   end
 
   def show

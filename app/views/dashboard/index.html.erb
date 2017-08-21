@@ -1,0 +1,28 @@
+<div class="col-md-12">
+<div class="panel panel-default">
+  <div class="panel-heading">登録者数</div>
+  <div class="panel-body text-right">
+    <h3><%= User.count %>人</h3>
+    <%= column_chart User.group_by_hour_of_day(:created_at, format: "%l %P").count, height: "200px" %>
+  </div>
+</div>
+</div>
+<div class="col-md-6">
+  <div class="panel panel-default">
+    <div class="panel-heading">来場数</div>
+    <div class="panel-body text-right">
+      <h3><%= VisitHistory.count %>回</h3>
+      <%= column_chart VisitHistory.group_by_hour_of_day(:created_at, format: "%l %P").count, height: "200px" %>
+    </div>
+  </div>
+</div>
+<div class="col-md-6">
+  <div class="panel panel-default">
+    <div class="panel-heading">写真登録数</div>
+    <div class="panel-body text-right">
+      <h3><%= Photo.count %>枚</h3>
+      <%= column_chart Photo.group_by_hour_of_day(:created_at, format: "%l %P").count, height: "200px" %>
+    </div>
+  </div>
+</div>
+
