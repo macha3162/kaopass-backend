@@ -2,8 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.includes(:photos).order(id: :desc).page params[:page]
-
+    @users = User.includes(:photos, :visit_histories, :session_histories).order(id: :desc).page params[:page]
   end
 
   def show
@@ -43,7 +42,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
+    DeleteUserJob.perform_later(@user)
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }

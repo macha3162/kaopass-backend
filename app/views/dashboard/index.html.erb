@@ -18,10 +18,10 @@
 </div>
 <div class="col-md-6">
   <div class="panel panel-default">
-    <div class="panel-heading">写真登録数</div>
+    <div class="panel-heading">申込みセッション</div>
     <div class="panel-body text-right">
-      <h3><%= Photo.count %>枚</h3>
-      <%= column_chart Photo.group_by_hour_of_day(:created_at, format: "%l %P").count, height: "200px" %>
+      <h3>合計<%= SessionHistory.count %>セッション</h3>
+      <%= pie_chart SessionHistory.joins(:session).group('sessions.short_title').count, height: "200px" %>
     </div>
   </div>
 </div>

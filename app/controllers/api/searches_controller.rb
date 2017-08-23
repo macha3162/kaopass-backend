@@ -22,6 +22,8 @@ module Api
 
     def create
       @search = Search.new(search_params)
+      # @search.save
+      ActionCable.server.broadcast 'user_channel', message: 'reload'
       face_matchs = Face.find_by_image(@search.image).face_matches
       face_match = face_matchs.first
       if face_match.present?
@@ -29,12 +31,12 @@ module Api
         photo = Photo.find_by(id: face_match.face.external_image_id)
         if photo.present?
           photo.user.visit_histories.create
-          ActionCable.server.broadcast 'user_channel', message: 'masuda'
+          ActionCable.server.broadcast 'user_channel', message: 'reload'
           render json: photo.user
-          #@search.save
         end
       end
-    rescue
+    rescue => error
+      pp error
       head :bad_request
     end
 

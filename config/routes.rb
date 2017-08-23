@@ -1,5 +1,6 @@
 require 'sidekiq/web'
 Rails.application.routes.draw do
+  resources :sessions
   root 'dashboard#index'
 
   mount Sidekiq::Web, at: "/sidekiq"
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
     resources :users do
       resources :photos
       resources :signatures
+      resources :session_histories
     end
   end
 end

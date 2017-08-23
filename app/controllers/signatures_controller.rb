@@ -21,7 +21,7 @@ class SignaturesController < ApplicationController
   def create
     @signature = @user.signatures.new(signature_params)
     if @signature.save
-      ActionCable.server.broadcast 'user_channel', message: 'masuda'
+      ActionCable.server.broadcast 'user_channel', message: 'reload'
       head :created
     else
       render :new

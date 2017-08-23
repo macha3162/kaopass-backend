@@ -15,7 +15,7 @@
     <% @searches.each do |search| %>
       <tr>
         <td><%= link_to search.id, search_path(search) %></td>
-        <td><%= image_tag search.image.thumb.url %></td>
+        <td><%= image_tag search.image.url %></td>
         <td><%=l search.created_at %></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),

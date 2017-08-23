@@ -2,17 +2,6 @@ module Api
   class SignaturesController < Api::ApplicationController
     before_action :set_signature, only: [:show, :edit, :update, :destroy]
 
-    # GET /signatures
-    # GET /signatures.json
-    def index
-      @signatures = Signature.all
-    end
-
-    # GET /signatures/1
-    # GET /signatures/1.json
-    def show
-    end
-
     # GET /signatures/new
     def new
       @signature = Signature.new
