@@ -16,7 +16,7 @@ class Photo < ApplicationRecord
         new_face.save
       end
     end
-    self.attribute(has_face: true) if self.faces.present?
+    self.update_attribute(:has_face, true) if self.faces.present?
     self.faces
   end
 
