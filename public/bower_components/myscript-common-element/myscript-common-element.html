@@ -6,6 +6,8 @@ LICENSE: [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)
 <link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
 <link rel="import" href="../paper-fab/paper-fab.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../paper-spinner/paper-spinner.html">
 <link rel="import" href="../paper-toast/paper-toast.html">
 <link rel="import" href="../myscript/myscript.html">
 <!--
@@ -38,7 +40,7 @@ The `myscript-common-element` is a web component wrapper around MyScriptJS InkPa
         }
         .buttons {
             position: inherit;
-            float: left;
+            float: right;
             display: flex;
             display: -webkit-flex;
             z-index: 2;
@@ -50,15 +52,29 @@ The `myscript-common-element` is a web component wrapper around MyScriptJS InkPa
             background: #1A9FFF;
             margin: 6px;
         }
+        paper-button.indigo {
+            background-color: #1A9FFF;
+            color: white;
+            --paper-button-raised-keyboard-focus: {
+                background-color: #3D6FD3 !important;
+                color: white !important;
+            };
+        }
     </style>
     <template>
         <div class="buttons" hidden="[[ hidebuttons ]]">
+            <!--
             <paper-fab mini src="undo.svg" title="undo" on-tap="undo" disabled="[[ !canundo ]]" hidden="[[ _disableUndoRedo ]]"></paper-fab>
             <paper-fab mini src="redo.svg" title="redo" on-tap="redo" disabled="[[ !canredo ]]" hidden="[[ _disableUndoRedo ]]"></paper-fab>
-            <paper-fab mini src="trash.svg" title="clear" on-tap="clear" disabled="[[ !canclear ]]" hidden="[[ _disableClear ]]"></paper-fab>
+            -->
+            <paper-fab mini src="del.svg" title="clear" on-tap="clear" disabled="[[ !canclear ]]" hidden="[[ _disableClear ]]"></paper-fab>
             <paper-fab mini src="send.svg" title="recognize" on-tap="recognize" disabled="[[ !canclear ]]" hidden="[[ _disableRecognize ]]"></paper-fab>
+            <!--
             <paper-fab mini src="send.svg" title="post" on-tap="post" disabled="[[ !canclear ]]"></paper-fab>
+            -->
+            <paper-button id="submit" raised title="post" on-tap="post" disabled="[[ !canclear ]]" class="indigo">次へ</paper-button>
         </div>
+
         <div id="myscript-input-area" on-changed="_onChanged" on-success="_onSuccess" on-error="_onError"></div>
         <paper-toast class="fit-bottom"></paper-toast>
     </template>
@@ -378,9 +394,14 @@ The `myscript-common-element` is a web component wrapper around MyScriptJS InkPa
          */
         post: function () {
             if (this._inkPaper) {
-              console.log(document.querySelector('#signature_name').value = document.querySelector('#candidate_result').value);
-              console.log(document.querySelector('#signature_image').value = this._inkPaper.getInkAsPng());
+                console.log(document.querySelector('#signature_name').value = document.querySelector('#candidate_result').value);
+                console.log(document.querySelector('#signature_image').value = this._inkPaper.getInkAsPng());
+                document.querySelector('#submit').textContent = '送信中 ';
+                var el = document.createElement("paper-spinner");
+                el.setAttribute("active", '');
+                document.querySelector('#submit').appendChild(el)
                 document.querySelector('#new_signature').submit();
+
             }
         },
         /**
