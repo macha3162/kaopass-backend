@@ -4,7 +4,6 @@ class CreateSessions < ActiveRecord::Migration[5.1]
       t.string :time
       t.string :place
       t.string :title
-      t.string :short_title
       t.string :detail
       t.integer :number
 

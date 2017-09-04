@@ -5,3 +5,6 @@ aws:
   bucket: zero-to-one-photos
   collection_id: <%= ENV['AWS_COLLECTION_ID'] %>
 signature_cdn_base: ''
+myscript:
+  applicationkey:
+  hmackey:
