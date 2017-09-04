@@ -22,7 +22,6 @@ module Api
 
     def create
       @search = Search.new(search_params)
-      # @search.save
       ActionCable.server.broadcast 'user_channel', message: 'reload'
       face_matchs = Face.find_by_image(@search.image).face_matches
       face_match = face_matchs.first
@@ -36,19 +35,9 @@ module Api
         end
       end
     rescue => error
-      pp error
+      logger.warn(error)
       head :bad_request
     end
-
-    # 検索クエリの保存どうする？？
-    # def create
-    #   @search = Search.new(search_params)
-    #   if @search.save
-    #     show
-    #   else
-    #     render json: @search.errors, status: :unprocessable_entity
-    #   end
-    # end
 
     def update
       if @search.update(search_params)

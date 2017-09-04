@@ -18,38 +18,26 @@ class PhotosController < ApplicationController
 
   def create
     @photo = @user.photos.new(photo_params)
-
-    respond_to do |format|
-      if @photo.save
-        IndexFacesJob.perform_later(@photo)
-        format.html { redirect_to [@user, @photo], notice: 'Photo was successfully created.' }
-        format.json { render :show, status: :created, location: [@user, @photo] }
-      else
-        format.html { render :new }
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
-      end
+    if @photo.save
+      IndexFacesJob.perform_later(@photo)
+      redirect_to [@user, @photo], notice: 'Photo was successfully created.'
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @photo.update(photo_params)
-        IndexFacesJob.perform_later(@photo)
-        format.html { redirect_to [@user, @photo], notice: 'Photo was successfully updated.' }
-        format.json { render :show, status: :ok, location: [@user, @photo] }
-      else
-        format.html { render :edit }
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
-      end
+    if @photo.update(photo_params)
+      IndexFacesJob.perform_later(@photo)
+      redirect_to [@user, @photo], notice: 'Photo was successfully updated.'
+    else
+      render :edit
     end
   end
 
   def destroy
     @photo.destroy
-    respond_to do |format|
-      format.html { redirect_to user_photos_path(@user), notice: 'Photo was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to user_photos_path(@user), notice: 'Photo was successfully destroyed.'
   end
 
   private
