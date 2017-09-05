@@ -14,7 +14,7 @@ places = %w(MainHall CommunityArea SubHall)
 Session.destroy_all
 
 timings.each.with_index(1) do |time, index|
-  title = "セッション#{index}タイトル"
-  detail = "これはセッション#{}の詳細情報です。"
+  title = "session_#{index} this is title"
+  detail = "session_#{index} this is session details."
   Session.create(number: index, time: time, place: places.sample, title: title, detail: detail)
 end

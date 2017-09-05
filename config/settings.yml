@@ -2,9 +2,13 @@ aws:
   access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
   secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
   region: us-west-2
-  bucket: zero-to-one-photos
+  bucket: s3bucket
   collection_id: <%= ENV['AWS_COLLECTION_ID'] %>
 signature_cdn_base: ''
+
+# 手書き入力を行なうためには、MyScriptのAPIキーを発行する必要があります.
+# 下記のURLから会員登録を行い、APIを取得してください.
+# https://developer.myscript.com/
 myscript:
   applicationkey:
   hmackey:
