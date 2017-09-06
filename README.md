@@ -141,4 +141,4 @@ KaoPassアプリのリポジトリはこちら。
 
 ## License
 
-Licensed under [MIT](https://github.com/TalAter/annyang/blob/master/LICENSE).
+Licensed under [MIT](https://github.com/macha3162/kaopass/blob/master/LICENSE).
