@@ -21,7 +21,8 @@
     <div class="panel-heading">申込みセッション</div>
     <div class="panel-body text-right">
       <h3>合計<%= SessionHistory.count %>セッション</h3>
-      <%= pie_chart SessionHistory.joins(:session).group('sessions.short_title').count, height: "200px" %>
+      <%= pie_chart SessionHistory.joins(:session).group('sessions.title').count, height: "200px" %>
+      <%= pie_chart SessionHistory.joins(:session).group('sessions.title').count, height: "200px" %>
     </div>
   </div>
 </div>
