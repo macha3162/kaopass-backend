@@ -14,13 +14,14 @@
 新規登録は、手書きで名前を入力し、次に興味のあるセッションを選びます。
 それだけ。以上でチェックインは完了です。
 
-<img src="https://media.giphy.com/media/6ekYTjQ5Gx4D6/giphy.gif" />
+![KaoPass新規登録](https://media.giphy.com/media/6ekYTjQ5Gx4D6/giphy.gif "新規登録")
+
 
 #### 再入場
 再入場は、顔写真を撮影すると、
 手書き入力された名前を読み上げつつ、選んだセッションが表示されます。
 
-<img src="https://media.giphy.com/media/DqWgTaUIAbv4A/giphy.gif" />
+![KaoPass再入場](https://media.giphy.com/media/DqWgTaUIAbv4A/giphy.gif "再入場")
 
 バックエンドは申し込みがある度に、セッションの申込情報が自動更新で表示されます。
 
