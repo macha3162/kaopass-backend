@@ -2,7 +2,7 @@
 
 イベントのチェックインを、顔認証と手書き認識でおこなえるようにしたiOSアプリのバックエンドです。  
 このアプリケーションはRailsで作られています。  
-実行するためには、このアプリケーションとKaoPassアプリを実行する必要があります。  
+実行するためには、このアプリケーションと[KaoPassアプリ](https://github.com/macha3162/kaopass-ios)を実行する必要があります。
 
 ### アプリケーションの概要
 
@@ -132,7 +132,7 @@ bundle exec sidekiq
 ## アプリの接続
 
 起動したサーバにアプリを接続します。
-KaoPassアプリのリポジトリはこちら。
+KaoPassアプリのリポジトリは[こちら](https://github.com/macha3162/kaopass-ios)。
 
 ## お問い合わせ
 
@@ -141,4 +141,4 @@ KaoPassアプリのリポジトリはこちら。
 
 ## License
 
-Licensed under [MIT](https://github.com/macha3162/kaopass/blob/master/LICENSE).
+Licensed under [MIT](LICENSE).
